@@ -1,6 +1,7 @@
 
 var variants = document.querySelectorAll('.cinfo__variants__item');
 var background = document.querySelector('.cfilter__info__items__back');
+var background1 = document.querySelector('.cfilter__info__items__back1');
 
 variants.forEach(function (variant) {
     variant.addEventListener('click', function () {
@@ -22,33 +23,24 @@ function toggleMenu(menuId) {
     }
 }
 
-function openSubMenu(subMenuId) {
-    var subMenuElement = document.getElementById(subMenuId);
-    if (subMenuElement) {
-        document.getElementById('menuFilter').classList.remove('visible');
-        subMenuElement.classList.add('visible');
-    }
-}
+function getCheckedCheckboxes(menuId) {
+    var menuElement = document.getElementById(menuId);
+    var checkedCheckboxes = [];
 
-function reopenSubMenu(subMenuId, subMenuIdClose) {
-    var subMenuElement = document.getElementById(subMenuId);
-    var subMenuElementClose = document.getElementById(subMenuIdClose);
-    if (subMenuElement) {
-        document.getElementById('menuFilter').classList.remove('visible');
-        subMenuElementClose.classList.remove('visible');
-        subMenuElement.classList.add('visible');
+    if (menuElement) {
+        var checkboxes = menuElement.querySelectorAll('.checkbox:checked');
+        
+        checkboxes.forEach(function (checkbox) {
+            checkedCheckboxes.push(checkbox.id);
+        });
     }
-}
 
-function closeSubMenu(subMenuId) {
-    var subMenuElement = document.getElementById(subMenuId);
-    if (subMenuElement) {
-        subMenuElement.classList.remove('visible');
-        document.getElementById('menuFilter').classList.add('visible');
-    }
+    return checkedCheckboxes;
 }
 
 function applyFilters() {
+
+
     var menus = document.querySelectorAll('.submenu');
     for (var i = 0; i < menus.length; i++) {
         menus[i].classList.remove('visible');
@@ -57,13 +49,84 @@ function applyFilters() {
     background.classList.remove('visible');
 }
 
+function openSubMenu(subMenuId) {
+    var subMenuElement = document.getElementById(subMenuId);
+    if (subMenuElement) {
+        document.getElementById('menuFilter').classList.remove('visible');
+        subMenuElement.classList.add('visible');
+    }
+}
+
+function reopenSubMenu(subMenuId, subMenuIdClose, imgId, pId) {
+    var subMenuElement = document.getElementById(subMenuId);
+    var subMenuElementClose = document.getElementById(subMenuIdClose);
+    var submenuImg = document.getElementById(imgId);
+    var pValue = document.getElementById(pId);
+
+    if (subMenuElement) {
+        
+        document.getElementById('menuFilter').classList.remove('visible');
+        subMenuElementClose.classList.remove('visible');
+        subMenuElement.classList.add('visible');
+    }
+    // Получаем все отмеченные чекбоксы в подменю
+    var checkedCheckboxes = document.querySelectorAll('.submenu input[type="checkbox"]:checked');
+    var checkedBudgetCheckboxes = getCheckedCheckboxes(subMenuIdClose);
+    var filterMenuContent = document.getElementById('filterMenuContent');
+
+    if (checkedBudgetCheckboxes.length > 0) { 
+        submenuImg.style.display = 'block';
+        pValue.textContent = 'Выбрано ' + checkedBudgetCheckboxes.length + ' фильтров'; 
+    } else { 
+        submenuImg.style.display = 'none';
+    }
+
+    if (checkedCheckboxes.length > 0) {
+        filterMenuContent.textContent = 'Выбрано ' + checkedCheckboxes.length + ' фильтров';      
+    } else {
+        filterMenuContent.textContent = 'Фильтр';
+    }
+}
+
+function closeSubMenu(subMenuId , imgId, pId) {
+    var subMenuElement = document.getElementById(subMenuId);
+    var submenuImg = document.getElementById(imgId);
+    var pValue = document.getElementById(pId);
+
+    if (subMenuElement) {
+        subMenuElement.classList.remove('visible');
+        document.getElementById('menuFilter').classList.add('visible');
+    }
+
+    var checkedCheckboxes = document.querySelectorAll('.submenu input[type="checkbox"]:checked');
+    var checkedBudgetCheckboxes = getCheckedCheckboxes(subMenuId);
+    var filterMenuContent = document.getElementById('filterMenuContent');
+
+    if (checkedBudgetCheckboxes.length > 0) { 
+        submenuImg.style.display = 'block';
+        pValue.textContent = 'Выбрано ' + checkedBudgetCheckboxes.length + ' фильтров'; 
+    } else { 
+        submenuImg.style.display = 'none';
+    }
+
+    if (checkedCheckboxes.length > 0) {
+        filterMenuContent.textContent = 'Выбрано ' + checkedCheckboxes.length + ' фильтров';      
+    } else {
+        filterMenuContent.textContent = 'Фильтр';
+    }
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     var sortMenuTrigger = document.getElementById('sortMenuTrigger');
     var sortMenu = document.getElementById('sortMenu');
+    var sortMenuText = document.getElementById('sortMenuText');
 
     sortMenuTrigger.addEventListener('click', function () {
-        sortMenu.style.display = 'block';
+        sortMenu.classList.toggle('visible');
+        background1.classList.toggle('visible');
     });
 
     sortMenu.addEventListener('click', function (event) {
@@ -74,7 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             switch (action) {
                 case 'back':
-                    sortMenu.style.display = 'none';
+                    sortMenu.classList.remove('visible');
+                    background1.classList.remove('visible');
                     break;
                 case 'popularity':
                 case 'expensive':
@@ -89,8 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     target.classList.add('selected');
 
                     // Логика для выбора "По популярности", "Сначала дороже", "Сначала дешевле", "По оценкам"
-                    sortMenuTrigger.textContent = target.textContent;
-                    sortMenu.style.display = 'none';
+                    sortMenuText.textContent = target.textContent;
+                    sortMenu.classList.remove('visible');
+                    background1.classList.remove('visible');
                     break;
                 default:
                     break;
@@ -119,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         arrows: false
     });
 
-    $('.chot__slider').slick ({
+    $('.chot__slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         infinite: true,
@@ -142,17 +207,17 @@ document.addEventListener("DOMContentLoaded", function () {
         centerMode: true,
         centerPadding: '10px',
     });
-    
+
     var slider = $('.creviews__slider');
     var progressBar = $('.progress-bar');
     var progressIndicator = $('.progress-indicator');
-    
+
     slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
         var percent = (nextSlide / (slick.slideCount - 1)) * 100;
         progressIndicator.css('left', percent + '%');
     });
 
-    
+
     // Добавляем обработчик события afterChange для выделения активного слайда
     $('.cfilter__dates').on('afterChange', function (event, slick, currentSlide) {
         $('.cfilter__dates__slide').removeClass('active');

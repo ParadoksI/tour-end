@@ -146,54 +146,70 @@
                         </div>
                     </div>
                     <div class="cfilter__info__items">
-                        <div class="cfilter__info__item" id="filterMenu">
+                        <div onclick="toggleMenu('menuFilter')" class="cfilter__info__item" id="filterMenu">
                             <div class="cfilter__info__items__back"></div>
                             <img src="./assets/img/filters.svg" alt="">
-                            <p onclick="toggleMenu('menuFilter')">Фильтр</p>
+                            <p id="filterMenuContent">Фильтр</p>
                         </div>
                         <div class="menuFilter" id="menuFilter">
                             <div class="menuFilter__item">
-                                <div>
-                                    <p onclick="openSubMenu('menuBudget')">Бюджет на ночь</p>
-                                    <p id="menuFilter__undertext">Любой</p>
+                                <div class="menuFilter__item__content">
+                                    <img id="filterImg1" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <div>
+                                        <p onclick="openSubMenu('menuBudget')">Бюджет на ночь</p>
+                                        <p id="menuFilter__undertext1">Любой</p>
+                                    </div>
                                 </div>
                                 <img src="./assets/img/wallet2.svg" alt="">
                             </div>
                             <div class="menuFilter__item">
-                                <div>
-                                    <p onclick="openSubMenu('menuRegion')">Регион</p>
-                                    <p id="menuFilter__undertext">Любой</p>
+                                <div class="menuFilter__item__content">
+                                    <img id="filterImg2" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <div>
+                                        <p onclick="openSubMenu('menuRegion')">Регион</p>
+                                        <p id="menuFilter__undertext2">Любой</p>
+                                    </div>
                                 </div>
                                 <img src="./assets/img/search_geo.svg" alt="">
                             </div>
                             <div class="menuFilter__item">
-                                <div>
-                                    <p onclick="openSubMenu('menuStars')">Количество звёзд</p>
-                                    <p id="menuFilter__undertext">Любые</p>
+                                <div class="menuFilter__item__content">
+                                    <img id="filterImg3" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <div>
+                                        <p onclick="openSubMenu('menuStars')">Количество звёзд</p>
+                                        <p id="menuFilter__undertext3">Любые</p>
+                                    </div>
                                 </div>
                                 <img src="./assets/img/star.svg" alt="">
                             </div>
                             <div class="menuFilter__item">
-                                <div>
-                                    <p onclick="openSubMenu('menuFood')">Питание</p>
-                                    <p id="menuFilter__undertext">Любое</p>
+                                <div class="menuFilter__item__content">
+                                    <img id="filterImg4" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <div>
+                                        <p onclick="openSubMenu('menuFood')">Питание</p>
+                                        <p id="menuFilter__undertext4">Любое</p>
+                                    </div>
                                 </div>
                                 <img src="./assets/img/baranchik.svg" alt="">
                             </div>
                             <div class="menuFilter__item">
-                                <div>
-                                    <p onclick="openSubMenu('menuDays')">Количество дней</p>
-                                    <p id="menuFilter__undertext">Любое</p>
+                                <div class="menuFilter__item__content">
+                                    <img id="filterImg5" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <div>
+                                        <p onclick="openSubMenu('menuDays')">Количество дней</p>
+                                        <p id="menuFilter__undertext5">Любое</p>
+                                    </div>
                                 </div>
                                 <img src="./assets/img/calendar-week.svg" alt="">
                             </div>
                             <button onclick="applyFilters()">Применить</button>
                         </div>
 
+                        <!-- Подменю 1: budget -->
                         <div class="submenu submenuBudget" id="menuBudget">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuBudget')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuBudget', 'filterImg1', 'menuFilter__undertext1')">Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -226,14 +242,14 @@
                                     <label for="budget6">от 90 000</label>
                                 </div>
                             </div>
-                            <button onclick="reopenSubMenu('menuRegion', 'menuBudget')">Далее</button>
+                            <button onclick="reopenSubMenu('menuRegion', 'menuBudget', 'filterImg1', 'menuFilter__undertext1')">Далее</button>
                         </div>
 
                         <!-- Подменю 2: Регион -->
                         <div class="submenu" id="menuRegion">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuRegion')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuRegion', 'filterImg2', 'menuFilter__undertext2')">Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -252,14 +268,14 @@
                                 </div>
 
                             </div>
-                            <button onclick="reopenSubMenu('menuStars', 'menuRegion')">Далее</button>
+                            <button onclick="reopenSubMenu('menuStars', 'menuRegion','filterImg2', 'menuFilter__undertext2')">Далее</button>
                         </div>
 
                         <!-- Подменю 3: Количество звёзд -->
                         <div class="submenu" id="menuStars">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuStars')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuStars' , 'filterImg3', 'menuFilter__undertext3')">Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -293,14 +309,14 @@
                                 </div>
 
                             </div>
-                            <button onclick="reopenSubMenu('menuFood', 'menuStars')">Далее</button>
+                            <button onclick="reopenSubMenu('menuFood', 'menuStars' , 'filterImg3', 'menuFilter__undertext3')">Далее</button>
                         </div>
 
                         <!-- Подменю 4: Питание -->
                         <div class="submenu" id="menuFood">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuFood')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuFood' , 'filterImg4', 'menuFilter__undertext4')">Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -334,26 +350,178 @@
                                 </div>
 
                             </div>
-                            <button onclick="reopenSubMenu('menuDays', 'menuFood')">Далее</button>
+                            <button onclick="reopenSubMenu('menuDays', 'menuFood' , 'filterImg4', 'menuFilter__undertext4')">Далее</button>
                         </div>
 
                         <!-- Подменю 5: Количество дней -->
                         <div class="submenu" id="menuDays">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuDays')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuDays', 'filterImg5', 'menuFilter__undertext5')">Вернуться назад</p>
                             </div>
-                            <div>
-                                <!-- Элементы выбора для бюджета -->
+                            <div class="submenuList">
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days1" class="checkbox">
+                                    <label for="days1">1 день</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days2" class="checkbox">
+                                    <label for="days2">2 дня</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days3" class="checkbox">
+                                    <label for="days3">3 дня</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days4" class="checkbox">
+                                    <label for="days4">4 дня</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days5" class="checkbox">
+                                    <label for="days5">5 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days6" class="checkbox">
+                                    <label for="days6">6 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days7" class="checkbox">
+                                    <label for="days7">7 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days8" class="checkbox">
+                                    <label for="days8">8 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days9" class="checkbox">
+                                    <label for="days9">9 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days10" class="checkbox">
+                                    <label for="days10">10 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days11" class="checkbox">
+                                    <label for="days11">11 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days12" class="checkbox">
+                                    <label for="days12">12 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days13" class="checkbox">
+                                    <label for="days13">13 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days14" class="checkbox">
+                                    <label for="days14">14 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days15" class="checkbox">
+                                    <label for="days15">15 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days16" class="checkbox">
+                                    <label for="days16">16 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days17" class="checkbox">
+                                    <label for="days17">17 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days18" class="checkbox">
+                                    <label for="days18">18 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days19" class="checkbox">
+                                    <label for="days19">19 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days20" class="checkbox">
+                                    <label for="days20">20 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days21" class="checkbox">
+                                    <label for="days21">21 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days22" class="checkbox">
+                                    <label for="days22">22 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days23" class="checkbox">
+                                    <label for="days23">23 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days24" class="checkbox">
+                                    <label for="days24">24 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days25" class="checkbox">
+                                    <label for="days25">25 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days26" class="checkbox">
+                                    <label for="days26">26 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days27" class="checkbox">
+                                    <label for="days27">27 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days28" class="checkbox">
+                                    <label for="days28">28 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days29" class="checkbox">
+                                    <label for="days29">29 дней</label>
+                                </div>
+
+                                <div class="submenuItem">
+                                    <input type="checkbox" id="days30" class="checkbox">
+                                    <label for="days30">больше 30 дней</label>
+                                </div>
+
+                                
+
                             </div>
-                            <button onclick="closeSubMenu('menuDays')">Далее</button>
+                            <button class="btn__high__font" onclick="closeSubMenu('menuDays' , 'filterImg5', 'menuFilter__undertext5')">Далее</button>
                         </div>
 
                         <!--========================= Сортировка====================== -->
 
-                        <div class="cfilter__info__item">
+                        <div id="sortMenuTrigger" class="cfilter__info__item">
+                            <div class="cfilter__info__items__back1"></div>
                             <img src="./assets/img/cfilters__sort.svg" alt="">
-                            <p id="sortMenuTrigger">Сортировка</p>
+                            <p id="sortMenuText">Сортировка</p>
                         </div>
 
                         <div id="sortMenu" class="sort-menu">
