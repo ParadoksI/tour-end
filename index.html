@@ -111,40 +111,41 @@
 
                         <div class="search-turs__var people__var ">
                             <img src="./assets/img/person.svg" alt="">
-                            <div class="search-turs__var__func">
+                            <div class="search-turs__var__func people__func">
                                 <p>Кол-во человек</p>
-                                <div class="search-turs__var__func__muchpeople">
-                                    <p onclick="togglePeople()">Добавить</p>
+                                <div class="search-turs__var__func__muchpeople" onclick="togglePeople()">
+                                    <p id="textPeople">1 взрослый </p><span id="textChildren">, без детей</span>
                                 </div>
                                 <div class="search-turs__var__func__menu ">
-                                    <div class="search-turs__var__func__menu__people">
-                                        <button id="decrementBtn">-</button>
-                                        <p id="varPeople">1 <span>взрослых</span></p>
-                                        <button id="incrementBtn">+</button>
-
-                                    </div>
-                                    <div class="search-turs__var__func__menu__chil">
-                                        <div id="optionsContainer">
-
+                                    <div>
+                                        <div class="search-turs__var__func__menu__people">
+                                            <button id="decrementBtn">-</button>
+                                            <p id="varPeople">1 <span>взрослых</span></p>
+                                            <button id="incrementBtn">+</button>
                                         </div>
-                                        <select class="children" name="" id="childrenSelect">
-                                            <option value="">Добавить ребёнка</option>
-                                            <option value="2">до 2 лет</option>
-                                            <option value="3">2 года</option>
-                                            <option value="4">3 года</option>
-                                            <option value="5">4 года</option>
-                                            <option value="6">5 лет</option>
-                                            <option value="7">6 лет</option>
-                                            <option value="8">7 лет</option>
-                                            <option value="9">8 лет</option>
-                                            <option value="10">9 лет</option>
-                                            <option value="11">10 лет</option>
-                                            <option value="12">11 лет</option>
-                                            <option value="13">12 лет</option>
-                                            <option value="14">13 лет</option>
-                                        </select>
+                                        <div class="search-turs__var__func__menu__chil">
+                                            <div id="optionsContainer">
+                                            </div>
+                                            <select class="children" name="" id="childrenSelect">
+                                                <option value="">Добавить ребёнка</option>
+                                                <option value="2">до 2 лет</option>
+                                                <option value="3">2 года</option>
+                                                <option value="4">3 года</option>
+                                                <option value="5">4 года</option>
+                                                <option value="6">5 лет</option>
+                                                <option value="7">6 лет</option>
+                                                <option value="8">7 лет</option>
+                                                <option value="9">8 лет</option>
+                                                <option value="10">9 лет</option>
+                                                <option value="11">10 лет</option>
+                                                <option value="12">11 лет</option>
+                                                <option value="13">12 лет</option>
+                                                <option value="14">13 лет</option>
+                                            </select>
+                                        </div>
+                                        <div id="selectedOptionContainer"></div>
                                     </div>
-                                    <div id="selectedOptionContainer"></div>
+                                    <p id="closePeopleMenu">&#10006;</p>
                                 </div>
 
                             </div>
@@ -155,9 +156,39 @@
                                 <img src="./assets/img/wallet2.svg" alt="">
                                 <div class="search-turs__var__func" id="priceToggle">
                                     <p onclick="togglePrice()">Цена</p>
-                                    <p onclick="togglePrice()">Указать цену</p>
+                                    <p id="selectedPricesCount" onclick="togglePrice()">Указать цену</p>
                                     <div class="search__price" id="priceDrop">
-                                        
+                                        <div class="search__price__item">
+                                            <div>
+                                                <input type="checkbox" id="priceCheckbox5000" value="5000">
+                                                <label for="priceCheckbox5000">5000 тг</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="priceCheckbox10000" value="5000">
+                                                <label for="priceCheckbox10000">10000 тг</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="priceCheckbox20000" value="5000">
+                                                <label for="priceCheckbox20000">20000 тг</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="priceCheckbox30000" value="5000">
+                                                <label for="priceCheckbox30000">30000 тг</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="priceCheckbox50000" value="5000">
+                                                <label for="priceCheckbox50000">50000 тг</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="priceCheckbox100000" value="5000">
+                                                <label for="priceCheckbox100000">100000 тг</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="priceCheckboxMore" value="5000">
+                                                <label for="priceCheckboxMore">>100000 тг</label>
+                                            </div>
+                                        </div>
+                                        <p id="closePriceMenu">&#10006;</p>
                                     </div>
                                 </div>
 
@@ -167,19 +198,29 @@
                                 <div class="search-turs__var__func">
                                     <p id="muchsStars" onclick="toggleStar()">Категория отеля</p>
                                     <p id="muchStar" onclick="toggleStar()">1-5 звёзд</p>
-                                    
+
                                     <div class="list__star" id="starCheckboxes">
-                                        
-                                        <label><input type="checkbox" value="11" onclick="updateStarCount(this)">Любая категория</label>
-                                        <label><input type="checkbox" value="2" onclick="updateStarCount(this)">1 звезда</label>
-                                        <label><input type="checkbox" value="3" onclick="updateStarCount(this)">2 звезды</label>
-                                        <label><input type="checkbox" value="4" onclick="updateStarCount(this)">3 звезды</label>
-                                        <label><input type="checkbox" value="5" onclick="updateStarCount(this)">4 звезды</label>
-                                        <label><input type="checkbox" value="6" onclick="updateStarCount(this)">5 звёзд</label>
-                                        <label><input type="checkbox" value="7" onclick="updateStarCount(this)">HV-1</label>
-                                        <label><input type="checkbox" value="8" onclick="updateStarCount(this)">HV-2</label>
-                                        <label><input type="checkbox" value="9" onclick="updateStarCount(this)">APART</label>
-                                        <label><input type="checkbox" value="10" onclick="updateStarCount(this)">Б\К</label>
+
+                                        <label><input type="checkbox" value="11" onclick="updateStarCount(this)">Любая
+                                            категория</label>
+                                        <label><input type="checkbox" value="2" onclick="updateStarCount(this)">1
+                                            звезда</label>
+                                        <label><input type="checkbox" value="3" onclick="updateStarCount(this)">2
+                                            звезды</label>
+                                        <label><input type="checkbox" value="4" onclick="updateStarCount(this)">3
+                                            звезды</label>
+                                        <label><input type="checkbox" value="5" onclick="updateStarCount(this)">4
+                                            звезды</label>
+                                        <label><input type="checkbox" value="6" onclick="updateStarCount(this)">5
+                                            звёзд</label>
+                                        <label><input type="checkbox" value="7"
+                                                onclick="updateStarCount(this)">HV-1</label>
+                                        <label><input type="checkbox" value="8"
+                                                onclick="updateStarCount(this)">HV-2</label>
+                                        <label><input type="checkbox" value="9"
+                                                onclick="updateStarCount(this)">APART</label>
+                                        <label><input type="checkbox" value="10"
+                                                onclick="updateStarCount(this)">Б\К</label>
                                     </div>
                                 </div>
                             </div>
@@ -242,6 +283,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="search__chart">
+                                <input type="range" id="charterFlightRange" min="0" max="1" step="1" value="0">
+                                <label for="charterFlightRange">Только чартерный перелет</label>
+                            </div>
                         </div>
 
                         <div class="search__func">
@@ -266,7 +311,8 @@
                     </div>
 
                     <div class="offer__bottom">
-                        <input class="offer__btn btn btn--white" type="text" id="phoneInput" placeholder="+7 (___) ___ __ __">
+                        <input class="offer__btn btn btn--white" type="text" id="phoneInput"
+                            placeholder="+7 (___) ___ __ __">
                         <a class="offer__btn  btn" href="#">ПРЕДЛОЖИТЬ МНЕ </a>
                     </div>
 
@@ -1258,10 +1304,11 @@
                             <div class="push-contact__sub-title">Оставьте заявку и мы вам поможем</div>
                         </div>
 
-                        
-                            <input class="push-contact__input" type="text" id="phoneInput1" placeholder="+7 (___) ___ __ __">
-                            <button class="push-contact__btn  btn  btn--border">Жду звонка</button>
-                        
+
+                        <input class="push-contact__input" type="text" id="phoneInput1"
+                            placeholder="+7 (___) ___ __ __">
+                        <button class="push-contact__btn  btn  btn--border">Жду звонка</button>
+
                     </div>
 
                 </div>
@@ -1276,21 +1323,7 @@
                         &#169; 2023 "КАЙФТУР" Все права защищены законодательством РК. ТОО "...". БИН 123456789012
                     </div>
                     <div class="footer__contact">
-                        <ul class="socials">
-                            <li class="socials__item">
-                                <a class="socials__link" href="#">
-                                    <img src="assets/img/socials/inst.svg" alt="">
-                                </a>
-                            </li>
-                            <li class="socials__item">
-                                <a class="socials__link" href="#">
-                                    <img src="assets/img/socials/tg.svg" alt="">
-                                </a>
-                            </li>
-                            <li class="socials__item">
-                                <img src="assets/img/socials/youtube.svg" alt="">
-                            </li>
-                        </ul>
+                        
 
                         <div class="footer__group">
                             <a class="footer__contact-link  footer__contact-link--bold" href="tel:+77073366665">

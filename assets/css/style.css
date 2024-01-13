@@ -1456,7 +1456,7 @@ body {
     .search-turs::before {
         content: "";
         position: absolute;
-        bottom: 0;
+        top: 121px;
         right: 0;
         left: 0;
         z-index: -1;
@@ -1730,6 +1730,11 @@ body {
         transition: all 0.3s ease;
     }
 
+    .people__func {
+        width: 100%;
+        position: relative;
+    }
+
     .people__var.active {
         height: 100%;
     }
@@ -1739,20 +1744,34 @@ body {
     }
 
     .search-turs__var__func__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
         margin-top: 10px;
         opacity: 0;
         transform: translateY(-18px);
         z-index: -1;
         transition: all 0.3s ease;
+        background-color: var(--main-color-bg);
+        padding: 20px;
+        border: 1px solid #fff;
+        border-radius: 15px;
     }
 
     .search-turs__var__func__menu.active {
         opacity: 1;
         transform: rotateY(0);
-        z-index: 1;
+        z-index: 999;
     }
 
     .search-turs__var__func__muchpeople p {
+        opacity: 0.6;
+    }
+
+    .search-turs__var__func__muchpeople span {
         opacity: 0.6;
     }
 
@@ -1771,7 +1790,7 @@ body {
         height: 20px;
     }
 
-    #optionsContainer { 
+    #optionsContainer {
         padding-left: 4px;
         display: flex;
         flex-direction: column;
@@ -1812,15 +1831,26 @@ body {
         width: 20px;
     }
 
+    #closePeopleMenu {
+        display: none;
+        text-align: center;
+        font-size: 17px;
+    }
+
+    #closePeopleMenu.active {
+        display: block;
+    }
+
+    /* ==================== */
+
     .search__price {
         display: flex;
-        flex-direction: column;
-        /* Начально скрываем блок */
+        
         position: absolute;
         z-index: 199;
         top: 42px;
-        left:-46px;
-        align-items: center;
+        left: -46px;
+        align-items: flex-start;
         background-color: var(--main-color-bg);
         box-shadow: 0px 0px 5px rgba(250, 247, 247, 0.2);
         align-content: center;
@@ -1831,12 +1861,14 @@ body {
         opacity: 0;
         width: 292px;
         padding: 5px;
-        height: 300px;
         font-size: 19px;
         border-radius: 20px;
     }
 
-
+    .search__price__item { 
+        display: flex;
+        flex-direction: column;
+    }
 
     .search__price div {
         display: flex;
@@ -1844,11 +1876,16 @@ body {
         gap: 5px;
         width: 100%;
         font-size: 13px;
-        margin-left: 20px;
+        margin: 5px 0px 0px 10px;
+    }
+    
+    #closePriceMenu { 
+        vertical-align: top;
+        padding: 5px 5px 0px 0px;
     }
 
     .gotPrice {
-        transition: all 0.3s ease;      
+        transition: all 0.3s ease;
         height: 50px;
     }
 
@@ -1880,7 +1917,7 @@ body {
         border-radius: 0px 0px 15px 15px;
         padding: 15px;
         opacity: 0;
-        transform: translateX(-180px);
+        transform: translateX(-180%);
         transition: all 0.3s ease;
     }
 
@@ -1889,8 +1926,13 @@ body {
         transform: translateX(0);
         z-index: 1;
     }
+    
+    #muchStar { 
+        font-size: 10px;
+        width: 189px;
+    }
 
-    .list__star label { 
+    .list__star label {
         display: flex;
         gap: 5px;
     }
@@ -1965,6 +2007,43 @@ body {
         flex-direction: column;
         gap: 10px;
         margin-bottom: 5px;
+    }
+
+    .search__chart {
+        display: flex;
+        padding-left: 3px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .search__chart.active {
+        display: flex;
+    }
+
+    input[type=range] {
+        width: 35px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        border-radius: 10px/100%;
+        height: 7px;
+        border: 1px solid var(--color-orange);
+        background-color: #fff;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        background: #ecf0f1;
+        border: 1px solid var(--color-orange);
+        border-radius: 10px/100%;
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+        -webkit-appearance: none;
+        margin-top: -4px;
     }
 
     .search-turs__func {

@@ -1,9 +1,13 @@
+var countChildren = 0;
+
 function togglePeople() {
     var menuPeople = document.querySelector('.search-turs__var__func__menu');
     var containerPeople = document.querySelector('.people__var');
+    var closePeopleMenu = document.getElementById('closePeopleMenu');
 
     menuPeople.classList.toggle('active');
     containerPeople.classList.toggle('active');
+    closePeopleMenu.classList.toggle('active');
 }
 
 function togglePrice() {
@@ -16,9 +20,7 @@ function togglePrice() {
     var isActive = priceDrop.classList.contains('active');
 
     // Если класс active есть, создаем checkbox'ы
-    if (isActive) {
-        createPriceCheckboxes();
-    }
+    updateSelectedPrices();
 }
 
 function createPriceCheckboxes() {
@@ -46,21 +48,66 @@ function createPriceCheckboxes() {
         checkboxDiv.appendChild(checkbox);
         checkboxDiv.appendChild(label);
         priceDrop.appendChild(checkboxDiv);
+
+        // Добавляем слушатель события на изменение состояния checkbox
+        checkbox.addEventListener('change', updateSelectedPrices);
     });
 }
+
+function updateSelectedPrices() {
+    var priceCheckboxes = document.querySelectorAll('#priceDrop input[type="checkbox"]:checked');
+    var selectedPricesCount = priceCheckboxes.length;
+
+    // Update the <p> element with the selected prices count
+    var pElement = document.getElementById('selectedPricesCount');
+    pElement.textContent = selectedPricesCount + ' категорий выбрано';
+}
+
+var closePriceMenu = document.getElementById('closePriceMenu');
+closePriceMenu.addEventListener('click', function() { 
+    var priceDrop = document.getElementById('priceDrop');
+
+    // Добавляем или убираем класс active
+    priceDrop.classList.toggle('active');
+
+    // Проверяем, есть ли у блока класс active
+    var isActive = priceDrop.classList.contains('active');
+
+    // Если класс active есть, создаем checkbox'ы
+    updateSelectedPrices();
+});
 
 function updateStarCount(checkbox) {
     var starCountElement = document.getElementById('muchStar');
     var checkboxes = document.querySelectorAll('#starCheckboxes input[type="checkbox"]');
+    var starTextMap = {
+        '2': '1 &#9733;',
+        '3': '2 &#9733;',
+        '4': '3 &#9733;',
+        '5': '4 &#9733;',
+        '6': '5 &#9733;',
+        '7': 'HV-1',
+        '8': 'HV-2',
+        '9': 'APART',
+        '10': 'Б\\К'
+    };
 
     if (checkbox.value === '11') {
         checkboxes.forEach(function (cb) {
             cb.checked = checkbox.checked;
         });
-        starCountElement.textContent = 'Все';
+        starCountElement.innerHTML = 'Все';
     } else {
         var checkedCheckboxes = document.querySelectorAll('#starCheckboxes input[type="checkbox"]:checked');
-        starCountElement.textContent = checkedCheckboxes.length > 0 ? checkedCheckboxes.length + ' категорий' : '';
+        if (checkedCheckboxes.length > 0) {
+            var selectedStars = Array.from(checkedCheckboxes).map(function (cb) {
+                return starTextMap[cb.value];
+            });
+            starCountElement.innerHTML = selectedStars.join(' ');
+        } 
+        else {
+            starCountElement.innerHTML = '';
+        }
     }
 }
 
@@ -233,18 +280,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Если уже выбраны две даты, обновляем текст в поле "calendar"
             if (selectedDates.length === 2) {
                 var startDate = selectedDates[0].toLocaleDateString();
-                var endDate = selectedDates[0].addDays(13).toLocaleDateString();
+                var endDate = selectedDates[1].toLocaleDateString(); // Fix: Use selectedDates[1] for endDate
 
-                // Проверяем, если вторая дата находится в пределах двух недель, то добавляем класс "endRange" только ей
-                if (selectedDates[1].getTime() >= selectedDates[0].getTime() && selectedDates[1].getTime() <= selectedDates[0].addDays(13).getTime()) {
-                    endDate = selectedDates[1].toLocaleDateString();
-                }
-
-                calendarElement.textContent = startDate + " - " + endDate;
-            } else if (selectedDates.length === 1) {
-                // Если выбрана только одна дата, обновляем текст в поле "calendar" на две недели вперед
-                var startDate = selectedDates[0].toLocaleDateString();
-                var endDate = selectedDates[0].addDays(13).toLocaleDateString();
                 calendarElement.textContent = startDate + " - " + endDate;
             }
 
@@ -270,6 +307,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var decrementBtn = document.getElementById('decrementBtn');
     var incrementBtn = document.getElementById('incrementBtn');
+    var textPeople = document.getElementById('textPeople');
+    var closePeopleMenu = document.getElementById('closePeopleMenu');
 
     // Элемент, отображающий количество взрослых
     var varPeopleElement = document.getElementById('varPeople');
@@ -277,11 +316,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // Текущее количество взрослых
     var varPeopleCount = 1;
 
+    closePeopleMenu.addEventListener('click', function () {
+        var menuPeople = document.querySelector('.search-turs__var__func__menu');
+        var containerPeople = document.querySelector('.people__var');
+
+        menuPeople.classList.toggle('active');
+        containerPeople.classList.toggle('active');
+        closePeopleMenu.classList.toggle('active');
+    });
+
     // Обработчик события для уменьшения количества взрослых
     decrementBtn.addEventListener('click', function () {
         if (varPeopleCount > 1) {
             varPeopleCount--;
             updateVarPeopleElement();
+            if (varPeopleCount == 1) {
+                textPeople.textContent = varPeopleCount + ' взрослый';
+            } else {
+                textPeople.textContent = varPeopleCount + ' взрослых';
+            }
+
         }
     });
 
@@ -289,6 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
     incrementBtn.addEventListener('click', function () {
         varPeopleCount++;
         updateVarPeopleElement();
+        textPeople.textContent = varPeopleCount + ' взрослых';
     });
 
     // Функция обновления текста с количеством взрослых
@@ -309,16 +364,72 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function displaySelectedOption(text) {
+        // Создать div с нужными стилями
+        var flexContainer = document.createElement('div');
+        flexContainer.style.display = 'flex';
+        flexContainer.style.justifyContent = 'space-between';
+        flexContainer.style.alignItems = 'center'; // Для центрирования содержимого
+
+        // Создать pTag и добавить стили
         var pTag = document.createElement('p');
         pTag.textContent = text;
-
-        // Добавить стили к pTag
-        pTag.style.border = '1px solid #C2A97D'; // Цвет границы
         pTag.style.borderRadius = '5px'; // Border-radius
         pTag.style.padding = '5px 20px'; // Padding
 
-        // Добавить pTag в контейнер
-        optionsContainer.appendChild(pTag);
+        // Создать pTag с крестиком (✖)
+        var closePTag = document.createElement('p');
+        closePTag.innerHTML = '&#10006;';
+        closePTag.id = 'closeChildrenP';
+        closePTag.style.cursor = 'pointer'; // Установить стиль курсора на pointer
+
+        var textChildren = document.getElementById('textChildren');
+        
+
+        // Increment countChildren when creating a new flexContainer
+        countChildren += 1;
+        if (countChildren === 1) { 
+            textChildren.textContent = ', ' + countChildren + ' ребёнок';
+        } else if (countChildren > 1) { 
+            textChildren.textContent = ', ' + countChildren + ' детей';
+        }
+
+
+        // Добавить pTag и closePTag в flexContainer
+        flexContainer.appendChild(pTag);
+        flexContainer.appendChild(closePTag);
+
+        // Добавить flexContainer в optionsContainer
+        optionsContainer.appendChild(flexContainer);
+
+        // Скрыть select
+        childrenSelect.style.display = 'none';
+
+        // Переместить select ниже
+        selectedOptionContainer.appendChild(childrenSelect.cloneNode(true));
+
+        // Очистить значение выбора в исходном select
+        childrenSelect.value = '';
+
+        // Показать select
+        childrenSelect.style.display = 'block';
+
+        // Добавить слушатель события для closePTag
+        closePTag.addEventListener('click', function () {
+
+            countChildren -= 1;
+            if (countChildren === 1) { 
+                textChildren.textContent = ', ' + countChildren + ' ребёнок';
+            } else if (countChildren > 1) { 
+                textChildren.textContent = ', ' + countChildren + ' детей';
+            } else if (countChildren < 1) { 
+                textChildren.textContent = ', '  + ' без детей';
+            }
+    
+            optionsContainer.removeChild(flexContainer);
+        });
+
+        // Добавить flexContainer в optionsContainer
+        optionsContainer.appendChild(flexContainer);
 
         // Скрыть select
         childrenSelect.style.display = 'none';
@@ -332,6 +443,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Показать select
         childrenSelect.style.display = 'block';
     }
+
+
 
 });
 
