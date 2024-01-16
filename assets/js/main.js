@@ -9,7 +9,7 @@ $(document).ready(function () {
     
 
     $('.offer__image').slick({
-        // Здесь вы можете добавить настройки Slick Slider
+
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -40,16 +40,13 @@ $(document).ready(function () {
     });
 
     $('.famous__slider').on('beforeChange', function (event, slick, currentSlide) {
-        // Определите ширину элемента прогресс-бара
         var progressBarWidth = $('.progress-bar').width();
-    
-        // Определите количество слайдов
         var totalSlides = slick.slideCount;
     
-        // Вычислите новое положение элемента прогресс-бара
+
         var newPosition = (progressBarWidth / totalSlides) * currentSlide;
     
-        // Примените смещение
+
         $('.progress-line').css('transform', 'translateX(' + newPosition + 'px)');
     });
 
@@ -104,7 +101,6 @@ $(document).ready(function () {
         // Очистка списка подсказок
         suggestionsList.empty();
 
-        // Замените этот блок кода на ваш механизм получения подсказок
         var suggestions = ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 8", "Вариант 9"];
         suggestions.forEach(function (suggestion) {
             suggestionsList.append("<li>" + suggestion + "</li>");
@@ -113,7 +109,6 @@ $(document).ready(function () {
         // Показать список подсказок
         suggestionsList.show();
 
-        // Установить высоту списка и добавить прокрутку, если необходимо
         var maxHeight = 100;
         suggestionsList.css({ maxHeight: maxHeight }).addClass("scrollable");
     }
