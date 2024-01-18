@@ -162,27 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-    // Получаем контейнер слайдера
-    var sliderContainer = document.getElementById("sliderContainer");
-
-    // Генерируем слайды для 13 дней вперед и 13 дней назад (бесконечность)
-    for (var i = 0; i < 14; i++) {
-        var date = new Date();
-        date.setDate(date.getDate() + i);
-        var slide = createSlide(date);
-        sliderContainer.appendChild(slide);
-    }
 
     // Инициализация Slick Slider после добавления слайдов
-    var slick = $('.cfilter__dates').slick({
-        centerMode: true,
-        centerPadding: '0',
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-        arrows: false
-    });
+    
 
     $('.chot__slider').slick({
         slidesToShow: 1,
@@ -219,30 +201,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Добавляем обработчик события afterChange для выделения активного слайда
-    $('.cfilter__dates').on('afterChange', function (event, slick, currentSlide) {
-        $('.cfilter__dates__slide').removeClass('active');
-        $('.cfilter__dates__slide').eq(currentSlide).addClass('active');
-    });
+    
 });
 
 // Функция для создания HTML-разметки для одного слайда с датой
-function createSlide(date) {
-    var daysOfWeek = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-    var dayOfWeek = daysOfWeek[date.getDay()];
-    var dayOfMonth = date.getDate();
-    var month = date.toLocaleString("ru-RU", { month: "long" });
 
-    // Создаем элемент слайда
-    var slide = document.createElement("div");
-    slide.classList.add("cfilter__dates__slide");
-
-    // Добавляем содержимое в слайд
-    slide.innerHTML = `
-        <div class="cfilter__dates__week">${dayOfWeek}</div>
-        <div class="cfilter__dates__day">${dayOfMonth}</div>
-        <div class="cfilter__dates__month">${month}</div>
-    `;
-
-    return slide;
-}
 

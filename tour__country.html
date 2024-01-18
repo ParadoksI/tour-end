@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
     <link rel="icon" href="./assets/img/Title.svg" type="image/svg">
     <title>Kaiftur</title>
 </head>
@@ -130,6 +131,10 @@
                 <div class="cfilter__dates " id="sliderContainer">
 
                 </div>
+                <div class="cfilter__calendar">
+                    <p id="calendarTrigger" title="toggle" data-toggle>Отобразить весь календарь</p>
+                </div>
+
                 <div class="container">
                     <div class="cfilter__name">
                         <p class="cfilter__name__title">Найдено <span>2245</span> туров</p>
@@ -154,7 +159,8 @@
                         <div class="menuFilter" id="menuFilter">
                             <div class="menuFilter__item">
                                 <div class="menuFilter__item__content">
-                                    <img id="filterImg1" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <img id="filterImg1" class="menuFilter__item__checked"
+                                        src="./assets/img/check-circle.svg" alt="">
                                     <div>
                                         <p onclick="openSubMenu('menuBudget')">Бюджет на ночь</p>
                                         <p id="menuFilter__undertext1">Любой</p>
@@ -164,7 +170,8 @@
                             </div>
                             <div class="menuFilter__item">
                                 <div class="menuFilter__item__content">
-                                    <img id="filterImg2" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <img id="filterImg2" class="menuFilter__item__checked"
+                                        src="./assets/img/check-circle.svg" alt="">
                                     <div>
                                         <p onclick="openSubMenu('menuRegion')">Регион</p>
                                         <p id="menuFilter__undertext2">Любой</p>
@@ -174,7 +181,8 @@
                             </div>
                             <div class="menuFilter__item">
                                 <div class="menuFilter__item__content">
-                                    <img id="filterImg3" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <img id="filterImg3" class="menuFilter__item__checked"
+                                        src="./assets/img/check-circle.svg" alt="">
                                     <div>
                                         <p onclick="openSubMenu('menuStars')">Количество звёзд</p>
                                         <p id="menuFilter__undertext3">Любые</p>
@@ -184,7 +192,8 @@
                             </div>
                             <div class="menuFilter__item">
                                 <div class="menuFilter__item__content">
-                                    <img id="filterImg4" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <img id="filterImg4" class="menuFilter__item__checked"
+                                        src="./assets/img/check-circle.svg" alt="">
                                     <div>
                                         <p onclick="openSubMenu('menuFood')">Питание</p>
                                         <p id="menuFilter__undertext4">Любое</p>
@@ -194,7 +203,8 @@
                             </div>
                             <div class="menuFilter__item">
                                 <div class="menuFilter__item__content">
-                                    <img id="filterImg5" class="menuFilter__item__checked" src="./assets/img/check-circle.svg" alt="">
+                                    <img id="filterImg5" class="menuFilter__item__checked"
+                                        src="./assets/img/check-circle.svg" alt="">
                                     <div>
                                         <p onclick="openSubMenu('menuDays')">Количество дней</p>
                                         <p id="menuFilter__undertext5">Любое</p>
@@ -209,7 +219,8 @@
                         <div class="submenu submenuBudget" id="menuBudget">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuBudget', 'filterImg1', 'menuFilter__undertext1')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuBudget', 'filterImg1', 'menuFilter__undertext1')">
+                                    Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -242,14 +253,16 @@
                                     <label for="budget6">от 90 000</label>
                                 </div>
                             </div>
-                            <button onclick="reopenSubMenu('menuRegion', 'menuBudget', 'filterImg1', 'menuFilter__undertext1')">Далее</button>
+                            <button
+                                onclick="reopenSubMenu('menuRegion', 'menuBudget', 'filterImg1', 'menuFilter__undertext1')">Далее</button>
                         </div>
 
                         <!-- Подменю 2: Регион -->
                         <div class="submenu" id="menuRegion">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuRegion', 'filterImg2', 'menuFilter__undertext2')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuRegion', 'filterImg2', 'menuFilter__undertext2')">
+                                    Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -268,14 +281,16 @@
                                 </div>
 
                             </div>
-                            <button onclick="reopenSubMenu('menuStars', 'menuRegion','filterImg2', 'menuFilter__undertext2')">Далее</button>
+                            <button
+                                onclick="reopenSubMenu('menuStars', 'menuRegion','filterImg2', 'menuFilter__undertext2')">Далее</button>
                         </div>
 
                         <!-- Подменю 3: Количество звёзд -->
                         <div class="submenu" id="menuStars">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuStars' , 'filterImg3', 'menuFilter__undertext3')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuStars' , 'filterImg3', 'menuFilter__undertext3')">
+                                    Вернуться назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -309,14 +324,16 @@
                                 </div>
 
                             </div>
-                            <button onclick="reopenSubMenu('menuFood', 'menuStars' , 'filterImg3', 'menuFilter__undertext3')">Далее</button>
+                            <button
+                                onclick="reopenSubMenu('menuFood', 'menuStars' , 'filterImg3', 'menuFilter__undertext3')">Далее</button>
                         </div>
 
                         <!-- Подменю 4: Питание -->
                         <div class="submenu" id="menuFood">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuFood' , 'filterImg4', 'menuFilter__undertext4')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuFood' , 'filterImg4', 'menuFilter__undertext4')">Вернуться
+                                    назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -350,14 +367,16 @@
                                 </div>
 
                             </div>
-                            <button onclick="reopenSubMenu('menuDays', 'menuFood' , 'filterImg4', 'menuFilter__undertext4')">Далее</button>
+                            <button
+                                onclick="reopenSubMenu('menuDays', 'menuFood' , 'filterImg4', 'menuFilter__undertext4')">Далее</button>
                         </div>
 
                         <!-- Подменю 5: Количество дней -->
                         <div class="submenu" id="menuDays">
                             <div class="submenu__back">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuDays', 'filterImg5', 'menuFilter__undertext5')">Вернуться назад</p>
+                                <p onclick="closeSubMenu('menuDays', 'filterImg5', 'menuFilter__undertext5')">Вернуться
+                                    назад</p>
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -510,10 +529,11 @@
                                     <label for="days30">больше 30 дней</label>
                                 </div>
 
-                                
+
 
                             </div>
-                            <button class="btn__high__font" onclick="closeSubMenu('menuDays' , 'filterImg5', 'menuFilter__undertext5')">Далее</button>
+                            <button class="btn__high__font"
+                                onclick="closeSubMenu('menuDays' , 'filterImg5', 'menuFilter__undertext5')">Далее</button>
                         </div>
 
                         <!--========================= Сортировка====================== -->
@@ -685,7 +705,7 @@
 
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="cfilters__items__pagination">
                         <img src="./assets/img/country/pagination.svg" alt="">
@@ -956,6 +976,7 @@
     <script src="./assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./assets/js/tour__country.js"></script>
+    <script src="./assets/js/dateSlider.js"></script>
 </body>
 
 </html>
