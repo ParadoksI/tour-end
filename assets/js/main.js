@@ -6,10 +6,9 @@ $(document).ready(function () {
     });
 
     // main slider
-    
+
 
     $('.offer__image').slick({
-
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -19,51 +18,115 @@ $(document).ready(function () {
     });
 
     $('.special__inner').slick({
-        slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000,
         dots: true,
-        arrows: false
+        responsive: [
+            {
+                breakpoint: 1099,
+                settings: {
+                    slidesToShow: 1,
+                    arrows: false
+                }
+            },
+            {
+                breakpoint: 9999,
+                settings: {
+                    slidesToShow: 3,
+                    arrows: true
+                }
+            }
+        ]
     });
 
     $('.famous__slider').slick({
-        slidesToShow: 3,  // Количество отображаемых слайдов одновременно
-        slidesToScroll: 1,  // Количество прокручиваемых слайдов за раз
-        
-        dots: false,  // Отображение точек навигации
+        slidesToScroll: 1,
+
+        dots: false,
         arrows: false,
-        infinite: true,  // Бесконечная прокрутка
-        
-        autoplay: true,  // Автоматическая прокрутка
-        autoplaySpeed: 2000  // Задержка между слайдами в миллисекундах
+        infinite: true,
+
+        autoplay: true,
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+                breakpoint: 1099,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 9999,
+                settings: {
+                    slidesToShow: 5
+                }
+            }
+        ]
     });
 
     $('.famous__slider').on('beforeChange', function (event, slick, currentSlide) {
         var progressBarWidth = $('.progress-bar').width();
         var totalSlides = slick.slideCount;
-    
+
 
         var newPosition = (progressBarWidth / totalSlides) * currentSlide;
-    
+
 
         $('.progress-line').css('transform', 'translateX(' + newPosition + 'px)');
     });
 
     $('.about__slider').slick({
-        slidesToShow: 1,
+
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 30000,
+        responsive: [
+            {
+                breakpoint: 1099,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+            {
+                breakpoint: 9999,
+                settings: {
+                    slidesToShow: 3,
+                    centerMode: true,
+                    centerPadding: '50px',
+
+                }
+            }
+        ],
+
     });
 
     $('.reviews__slider').slick({
-        slidesToScroll: 1,
-        slidesToShow: 1,
+
         autoplay: true,
-        autoplaySpeed: 3000,
-        dots: true,
+        autoplaySpeed: 300000,
+        
+        responsive: [
+            {
+                breakpoint: 1099,
+                settings: {
+                    slidesToScroll: 1,
+                    slidesToShow: 1,
+                    dots: true,
+                }
+            },
+            {
+                breakpoint: 9999,
+                settings: {
+                    dots: false,
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 3,
+                }
+            }
+        ]
     });
 
     $('#phoneInput').inputmask('+7 (999) 999-99-99');
@@ -114,7 +177,7 @@ $(document).ready(function () {
     }
 
     // 
-    
+
 
 });
 
