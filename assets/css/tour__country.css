@@ -11,8 +11,25 @@
     --main-color-bg: #192225;
 }
 
+@media screen and (min-width:1100px) and (max-width:1500px) {
+    .container {
+        max-width: 1000px;
+        margin: 0px 0px 0px 200px;
+        padding: 0 60px;
+    }
+}
 
-@media screen and (min-width:1100px) {}
+@media screen and (min-width:1501px) {
+    .container {
+        max-width: 1500px;
+        margin: 0px 0px 0px 200px;
+        padding: 0 60px;
+    }
+}
+
+@media screen and (min-width:1100px) {
+
+}
 
 @media screen and (max-width:1099px) and (min-width:200px) {
     .country__title {
