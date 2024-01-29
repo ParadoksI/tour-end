@@ -236,6 +236,28 @@
         background-color: #fff;
     }
 
+    .cfilter__dates .slick-next { 
+        right: 2px;
+        top: 120%;
+    }
+
+    .cfilter__dates .slick-prev { 
+        left: 2px;
+        top: 120%;
+    }
+
+    .cfilter__calendar { 
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: -20px;
+        color: var(--color-orange);
+        font-style: italic;
+    }
+
+    input[type="image"] { 
+        background-color: #fff;
+    }
+
     .cfilter__name {
         display: flex;
         justify-content: space-around;

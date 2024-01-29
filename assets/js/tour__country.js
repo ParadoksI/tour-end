@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Инициализация Slick Slider после добавления слайдов
     
+    
 
     $('.chot__slider').slick({
         slidesToShow: 1,
@@ -202,8 +203,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Добавляем обработчик события afterChange для выделения активного слайда
     
+    
 });
 
 // Функция для создания HTML-разметки для одного слайда с датой
+
 
 
