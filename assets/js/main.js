@@ -81,7 +81,7 @@ $(document).ready(function () {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 30000,
+        autoplaySpeed: 3000,
         responsive: [
             {
                 breakpoint: 1099,
@@ -105,7 +105,7 @@ $(document).ready(function () {
     $('.reviews__slider').slick({
 
         autoplay: true,
-        autoplaySpeed: 300000,
+        autoplaySpeed: 3087800,
         
         responsive: [
             {

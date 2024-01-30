@@ -113,17 +113,9 @@ body {
     width: 100%;
 }
 
-@media screen and (min-width:1100px) and (max-width:1500px) {
+@media screen and (min-width:1100px) {
     .container {
-        max-width: 1000px;
-        margin: 0px 0px 0px 200px;
-        padding: 0 60px;
-    }
-}
-
-@media screen and (min-width:1501px) {
-    .container {
-        max-width: 1500px;
+        max-width: calc(100vw - 200px);
         margin: 0px 0px 0px 200px;
         padding: 0 60px;
     }
@@ -1300,14 +1292,14 @@ body {
     }
 
     .tour__img {
-        max-width: 100%;
+        
         width: 114px;
         height: 110px;
         border-radius: 15px;
     }
 
     .tour__info {
-        width: 70%;
+        width: 100%;
         padding: 10px 20px 10px 10px;
         display: flex;
         flex-direction: column;
@@ -1409,7 +1401,7 @@ body {
     .tour__button button {
         margin-top: 10px;
         font-family: 'Druk Cur';
-        width: 70%;
+        width: 50%;
         height: 45px;
         border-radius: 15px;
         background: var(--Linear, linear-gradient(180deg, #C2A97D 0%, #A67C46 100%));
@@ -1494,7 +1486,7 @@ body {
     }
 
     .special__image img {
-        max-width: 100%;
+        width: 100%;
         border-radius: 15px;
     }
 
@@ -1662,6 +1654,7 @@ body {
     .direction__inner {
         display: flex;
         gap: 21px;
+        justify-content: space-between;
     }
 
     .direction__item {
@@ -1681,6 +1674,10 @@ body {
 
         position: relative;
 
+        width: 100%;
+    }
+
+    .direction__img img { 
         width: 100%;
     }
 
@@ -2122,19 +2119,6 @@ body {
         border-radius: 15px;
     }
 
-    .reviews {
-        margin-left: 200px;
-        max-width: 1000px;
-    }
-
-    .reviews__container {
-        margin: 0px 0px 10px 0px;
-
-    }
-
-    .reviews__slider {
-        max-width: 1200px;
-    }
 
     .reviews__slider__item {
         display: flex !important;
@@ -2217,10 +2201,10 @@ body {
         display: block;
         content: "";
         width: 75%;
-        height: 220%;
+        height: 190%;
 
         position: absolute;
-        top: 30%;
+        top: 28%;
         left: 50%;
 
         background-color: #EAEAEA;
@@ -2300,7 +2284,7 @@ body {
     }
 
     .reviews__btn {
-        width: 85%;
+        width: 40%;
         margin-top: 30px;
         background: #0A1216;
 

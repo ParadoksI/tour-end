@@ -47,7 +47,8 @@ function initializeSlider(currentDate) {
         slidesToScroll: 1,
         infinite: true,
         dots: false,
-        arrows: true
+        arrows: true,
+        variableWidth: true,
     });
 }
 
