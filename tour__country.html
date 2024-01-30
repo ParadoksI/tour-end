@@ -21,10 +21,37 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="container">
+            <div class="container__head">
                 <div class="header__inner">
                     <div class="header__top">
                         <img class="header__logo" src="assets/img/logo.svg" alt="">
+                        <div class="header__pc">
+                            <div class="header__select">
+                                <select class="header__select__func" name="select" id="">
+                                    <option class="header__select__func__var" value="value1" selected>Усть-каменогорск
+                                    </option>
+                                    <option class="header__select__func__var" value="value2">Усть-каменогорск</option>
+                                    <option class="header__select__func__var" value="value3">Усть-каменогорск</option>
+                                </select>
+                            </div>
+                            <ul class="header__list">
+                                <li><a href="#title" class="header__item header__active"
+                                        data-section="title">Главная</a></li>
+                                <li><a href="#abstracts" class="header__item" data-section="abstracts">Лучшие
+                                        предложения</a></li>
+                                <li><a href="#workshop" class="header__item" data-section="workshop">Горящие туры</a>
+                                </li>
+                                <li><a href="#maked" class="header__item" data-section="maked">Спец предложения</a></li>
+                                <li><a href="#popul" class="header__item" data-section="popul">Популярные
+                                        направления</a></li>
+                                <li><a href="#kurort" class="header__item" data-section="kurort">Популярные курорты</a>
+                                </li>
+                                <li><a href="#rest" class="header__item" data-section="rest">Органиция отдыха</a></li>
+                                <li><a href="#about" class="header__item" data-section="about">О нас</a></li>
+                                <li><a href="#rev" class="header__item" data-section="rev">Отзывы</a></li>
+                                <li><a href="#req" class="header__item" data-section="req">Оставьте заявку</a></li>
+                            </ul>
+                        </div>
 
                         <div class="header__group">
                             <a class="header__link" href="tel:+77073366665">+7 707 336-66-65</a>
@@ -33,6 +60,9 @@
                             </button>
                             <button class="burger" id="burger">
                                 <span>burger</span>
+                            </button>
+                            <button class="header__func__btn">
+                                Заказать замер
                             </button>
                         </div>
                     </div>
@@ -44,6 +74,7 @@
                 </div>
             </div>
         </header>
+        
         <main class="page">
             <section class="country__title">
                 <div class="container country__title__container">
@@ -74,38 +105,40 @@
                             Наше турагентство предоставляет широкий выбор курортов и отелей в объединенные арабские
                             эмираты. На нашем сайте вы найдете лучшие цены и предложения путевок в ОАЭ на 2023 год.
                         </div>
-                        <p>Воспользуйтесь ниже фильтром указав:</p>
-                        <div class="cinfo__content__items">
-                            <div class="cinfo__content__item">
-                                <div class="cinfo__circle"></div>
-                                <p>Дату</p>
+                        <div class="cinfo__content__all">
+                            <div class="cinfo__content__grid">
+                                <p>Воспользуйтесь ниже фильтром указав:</p>
+                                <div class="cinfo__content__items">
+                                    <div class="cinfo__content__item">
+                                        <div class="cinfo__circle"></div>
+                                        <p>Дату</p>
+                                    </div>
+                                    <p class="cinfo__content__item__not">
+                                        Не обязательно:
+                                    </p>
+                                    <div class="cinfo__content__item">
+                                        <div class="cinfo__circle"></div>
+                                        <p>Бюджет</p>
+                                    </div>
+                                    <div class="cinfo__content__item">
+                                        <div class="cinfo__circle"></div>
+                                        <p>Бюджет</p>
+                                    </div>
+                                    <div class="cinfo__content__item">
+                                        <div class="cinfo__circle"></div>
+                                        <p>Кол-во звезд</p>
+                                    </div>
+                                    <div class="cinfo__content__item">
+                                        <div class="cinfo__circle"></div>
+                                        <p>Кол-во дней</p>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="cinfo__content__item__not">
-                                Не обязательно:
-                            </p>
-                            <div class="cinfo__content__item">
-                                <div class="cinfo__circle"></div>
-                                <p>Бюджет</p>
+                            <div class="cinfo__foot__disc">
+                                <span>И отсортируйте список туров</span> по - цене, - популярности или - оценкам. Так же
+                                можно смотреть
+                                список отелей по карте (если для вас важно близость к морю, важным местам или др)
                             </div>
-
-                            <div class="cinfo__content__item">
-                                <div class="cinfo__circle"></div>
-                                <p>Бюджет</p>
-                            </div>
-
-                            <div class="cinfo__content__item">
-                                <div class="cinfo__circle"></div>
-                                <p>Кол-во звезд</p>
-                            </div>
-                            <div class="cinfo__content__item">
-                                <div class="cinfo__circle"></div>
-                                <p>Кол-во дней</p>
-                            </div>
-                        </div>
-                        <div class="cinfo__foot__disc">
-                            <span>И отсортируйте список туров</span> по - цене, - популярности или - оценкам. Так же
-                            можно смотреть
-                            список отелей по карте (если для вас важно близость к морю, важным местам или др)
                         </div>
                         <p class="cinfo__foot__link">Либо <a href="">оставьте заявку</a> и мы сделаем это за вас.</p>
                     </div>
@@ -165,8 +198,8 @@
                                         src="./assets/img/check-circle.svg" alt="">
                                     <img id="filterImg1" class="menuFilter__item__checked"
                                         src="./assets/img/check-circle.svg" alt="">
-                                    <div>
-                                        <p onclick="openSubMenu('menuBudget')">Бюджет на ночь</p>
+                                    <div class="menuFilter__toggle__submenu" onclick="openSubMenu('menuBudget')">
+                                        <p >Бюджет на ночь</p>
                                         <p id="menuFilter__undertext1">Любой</p>
                                     </div>
                                 </div>
@@ -178,8 +211,8 @@
                                         src="./assets/img/check-circle.svg" alt="">
                                     <img id="filterImg2" class="menuFilter__item__checked"
                                         src="./assets/img/check-circle.svg" alt="">
-                                    <div>
-                                        <p onclick="openSubMenu('menuRegion')">Регион</p>
+                                    <div class="menuFilter__toggle__submenu" onclick="openSubMenu('menuRegion')">
+                                        <p >Регион</p>
                                         <p id="menuFilter__undertext2">Любой</p>
                                     </div>
                                 </div>
@@ -191,8 +224,8 @@
                                         src="./assets/img/check-circle.svg" alt="">
                                     <img id="filterImg3" class="menuFilter__item__checked"
                                         src="./assets/img/check-circle.svg" alt="">
-                                    <div>
-                                        <p onclick="openSubMenu('menuStars')">Количество звёзд</p>
+                                    <div class="menuFilter__toggle__submenu" onclick="openSubMenu('menuStars')">
+                                        <p >Количество звёзд</p>
                                         <p id="menuFilter__undertext3">Любые</p>
                                     </div>
                                 </div>
@@ -204,8 +237,8 @@
                                         src="./assets/img/check-circle.svg" alt="">
                                     <img id="filterImg4" class="menuFilter__item__checked"
                                         src="./assets/img/check-circle.svg" alt="">
-                                    <div>
-                                        <p onclick="openSubMenu('menuFood')">Питание</p>
+                                    <div class="menuFilter__toggle__submenu" onclick="openSubMenu('menuFood')">
+                                        <p >Питание</p>
                                         <p id="menuFilter__undertext4">Любое</p>
                                     </div>
                                 </div>
@@ -217,8 +250,8 @@
                                         src="./assets/img/check-circle.svg" alt="">
                                     <img id="filterImg5" class="menuFilter__item__checked"
                                         src="./assets/img/check-circle.svg" alt="">
-                                    <div>
-                                        <p onclick="openSubMenu('menuDays')">Количество дней</p>
+                                    <div class="menuFilter__toggle__submenu" onclick="openSubMenu('menuDays')">
+                                        <p >Количество дней</p>
                                         <p id="menuFilter__undertext5">Любое</p>
                                     </div>
                                 </div>
@@ -229,12 +262,11 @@
 
                         <!-- Подменю 1: budget -->
                         <div class="submenu submenuBudget" id="menuBudget">
-                            <div class="submenu__back">
+                            <div class="submenu__back" onclick="closeSubMenu('menuBudget', 'filterImg1', 'menuFilter__undertext1')">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuBudget', 'filterImg1', 'menuFilter__undertext1')">
+                                <p >
                                     Вернуться назад</p>
-                                <p onclick="closeSubMenu('menuBudget', 'filterImg1', 'menuFilter__undertext1')">
-                                    Вернуться назад</p>
+                                
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -269,18 +301,16 @@
                             </div>
                             <button
                                 onclick="reopenSubMenu('menuRegion', 'menuBudget', 'filterImg1', 'menuFilter__undertext1')">Далее</button>
-                            <button
-                                onclick="reopenSubMenu('menuRegion', 'menuBudget', 'filterImg1', 'menuFilter__undertext1')">Далее</button>
+                            
                         </div>
 
                         <!-- Подменю 2: Регион -->
                         <div class="submenu" id="menuRegion">
-                            <div class="submenu__back">
+                            <div class="submenu__back" onclick="closeSubMenu('menuRegion', 'filterImg2', 'menuFilter__undertext2')">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuRegion', 'filterImg2', 'menuFilter__undertext2')">
+                                <p >
                                     Вернуться назад</p>
-                                <p onclick="closeSubMenu('menuRegion', 'filterImg2', 'menuFilter__undertext2')">
-                                    Вернуться назад</p>
+                                
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -301,18 +331,16 @@
                             </div>
                             <button
                                 onclick="reopenSubMenu('menuStars', 'menuRegion','filterImg2', 'menuFilter__undertext2')">Далее</button>
-                            <button
-                                onclick="reopenSubMenu('menuStars', 'menuRegion','filterImg2', 'menuFilter__undertext2')">Далее</button>
+                            
                         </div>
 
                         <!-- Подменю 3: Количество звёзд -->
                         <div class="submenu" id="menuStars">
-                            <div class="submenu__back">
+                            <div class="submenu__back" onclick="closeSubMenu('menuStars' , 'filterImg3', 'menuFilter__undertext3')">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuStars' , 'filterImg3', 'menuFilter__undertext3')">
+                                <p >
                                     Вернуться назад</p>
-                                <p onclick="closeSubMenu('menuStars' , 'filterImg3', 'menuFilter__undertext3')">
-                                    Вернуться назад</p>
+                                
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -348,18 +376,16 @@
                             </div>
                             <button
                                 onclick="reopenSubMenu('menuFood', 'menuStars' , 'filterImg3', 'menuFilter__undertext3')">Далее</button>
-                            <button
-                                onclick="reopenSubMenu('menuFood', 'menuStars' , 'filterImg3', 'menuFilter__undertext3')">Далее</button>
+                            
                         </div>
 
                         <!-- Подменю 4: Питание -->
                         <div class="submenu" id="menuFood">
-                            <div class="submenu__back">
+                            <div class="submenu__back" onclick="closeSubMenu('menuFood' , 'filterImg4', 'menuFilter__undertext4')">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuFood' , 'filterImg4', 'menuFilter__undertext4')">Вернуться
+                                <p >Вернуться
                                     назад</p>
-                                <p onclick="closeSubMenu('menuFood' , 'filterImg4', 'menuFilter__undertext4')">Вернуться
-                                    назад</p>
+                                
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -395,18 +421,16 @@
                             </div>
                             <button
                                 onclick="reopenSubMenu('menuDays', 'menuFood' , 'filterImg4', 'menuFilter__undertext4')">Далее</button>
-                            <button
-                                onclick="reopenSubMenu('menuDays', 'menuFood' , 'filterImg4', 'menuFilter__undertext4')">Далее</button>
+                            
                         </div>
 
                         <!-- Подменю 5: Количество дней -->
                         <div class="submenu" id="menuDays">
-                            <div class="submenu__back">
+                            <div class="submenu__back" onclick="closeSubMenu('menuDays', 'filterImg5', 'menuFilter__undertext5')">
                                 <img src="./assets/img/country/backspace.svg" alt="">
-                                <p onclick="closeSubMenu('menuDays', 'filterImg5', 'menuFilter__undertext5')">Вернуться
+                                <p >Вернуться
                                     назад</p>
-                                <p onclick="closeSubMenu('menuDays', 'filterImg5', 'menuFilter__undertext5')">Вернуться
-                                    назад</p>
+                                
                             </div>
                             <div class="submenuList">
                                 <div class="submenuItem">
@@ -565,8 +589,7 @@
                             </div>
                             <button class="btn__high__font"
                                 onclick="closeSubMenu('menuDays' , 'filterImg5', 'menuFilter__undertext5')">Далее</button>
-                            <button class="btn__high__font"
-                                onclick="closeSubMenu('menuDays' , 'filterImg5', 'menuFilter__undertext5')">Далее</button>
+                            
                         </div>
 
                         <!--========================= Сортировка====================== -->

@@ -3,6 +3,8 @@ var variants = document.querySelectorAll('.cinfo__variants__item');
 var background = document.querySelector('.cfilter__info__items__back');
 var background1 = document.querySelector('.cfilter__info__items__back1');
 
+
+
 variants.forEach(function (variant) {
     variant.addEventListener('click', function () {
         // Удаление класса "active" у всех элементов
@@ -17,10 +19,13 @@ variants.forEach(function (variant) {
 
 function toggleMenu(menuId) {
     var menuElement = document.getElementById(menuId);
+    var subMenuElement = document.querySelectorAll('.submenu');
     if (menuElement) {
         menuElement.classList.toggle('visible');
         background.classList.toggle('visible');
+        
     }
+    
 }
 
 function getCheckedCheckboxes(menuId) {
@@ -123,6 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var sortMenuTrigger = document.getElementById('sortMenuTrigger');
     var sortMenu = document.getElementById('sortMenu');
     var sortMenuText = document.getElementById('sortMenuText');
+
+    var submenu = document.getElementById('submenu');
+
+    
+    
 
     sortMenuTrigger.addEventListener('click', function () {
         sortMenu.classList.toggle('visible');
