@@ -23,9 +23,9 @@ function toggleMenu(menuId) {
     if (menuElement) {
         menuElement.classList.toggle('visible');
         background.classList.toggle('visible');
-        
+
     }
-    
+
 }
 
 function getCheckedCheckboxes(menuId) {
@@ -34,7 +34,7 @@ function getCheckedCheckboxes(menuId) {
 
     if (menuElement) {
         var checkboxes = menuElement.querySelectorAll('.checkbox:checked');
-        
+
         checkboxes.forEach(function (checkbox) {
             checkedCheckboxes.push(checkbox.id);
         });
@@ -69,7 +69,7 @@ function reopenSubMenu(subMenuId, subMenuIdClose, imgId, pId) {
     var pValue = document.getElementById(pId);
 
     if (subMenuElement) {
-        
+
         document.getElementById('menuFilter').classList.remove('visible');
         subMenuElementClose.classList.remove('visible');
         subMenuElement.classList.add('visible');
@@ -79,21 +79,21 @@ function reopenSubMenu(subMenuId, subMenuIdClose, imgId, pId) {
     var checkedBudgetCheckboxes = getCheckedCheckboxes(subMenuIdClose);
     var filterMenuContent = document.getElementById('filterMenuContent');
 
-    if (checkedBudgetCheckboxes.length > 0) { 
+    if (checkedBudgetCheckboxes.length > 0) {
         submenuImg.style.display = 'block';
-        pValue.textContent = 'Выбрано ' + checkedBudgetCheckboxes.length + ' фильтров'; 
-    } else { 
+        pValue.textContent = 'Выбрано ' + checkedBudgetCheckboxes.length + ' фильтров';
+    } else {
         submenuImg.style.display = 'none';
     }
 
     if (checkedCheckboxes.length > 0) {
-        filterMenuContent.textContent = 'Выбрано ' + checkedCheckboxes.length + ' фильтров';      
+        filterMenuContent.textContent = 'Выбрано ' + checkedCheckboxes.length + ' фильтров';
     } else {
         filterMenuContent.textContent = 'Фильтр';
     }
 }
 
-function closeSubMenu(subMenuId , imgId, pId) {
+function closeSubMenu(subMenuId, imgId, pId) {
     var subMenuElement = document.getElementById(subMenuId);
     var submenuImg = document.getElementById(imgId);
     var pValue = document.getElementById(pId);
@@ -107,15 +107,15 @@ function closeSubMenu(subMenuId , imgId, pId) {
     var checkedBudgetCheckboxes = getCheckedCheckboxes(subMenuId);
     var filterMenuContent = document.getElementById('filterMenuContent');
 
-    if (checkedBudgetCheckboxes.length > 0) { 
+    if (checkedBudgetCheckboxes.length > 0) {
         submenuImg.style.display = 'block';
-        pValue.textContent = 'Выбрано ' + checkedBudgetCheckboxes.length + ' фильтров'; 
-    } else { 
+        pValue.textContent = 'Выбрано ' + checkedBudgetCheckboxes.length + ' фильтров';
+    } else {
         submenuImg.style.display = 'none';
     }
 
     if (checkedCheckboxes.length > 0) {
-        filterMenuContent.textContent = 'Выбрано ' + checkedCheckboxes.length + ' фильтров';      
+        filterMenuContent.textContent = 'Выбрано ' + checkedCheckboxes.length + ' фильтров';
     } else {
         filterMenuContent.textContent = 'Фильтр';
     }
@@ -131,8 +131,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var submenu = document.getElementById('submenu');
 
-    
-    
+
+
 
     sortMenuTrigger.addEventListener('click', function () {
         sortMenu.classList.toggle('visible');
@@ -174,31 +174,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Инициализация Slick Slider после добавления слайдов
-    
-    
+
+
 
     $('.chot__slider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
+
+
         infinite: true,
         autoplay: true,
         autoplaySpeed: 5000,
-        arrows: false,
+
         dots: true,
-        centerMode: true,
-        centerPadding: '10px',
+
+        responsive: [
+            {
+                breakpoint: 1099,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '10px',
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 9999,
+                settings: {
+                    slidesToShow: 3,
+                    centerMode: true,
+                    centerPadding: '20px',
+                    slidesToScroll: 3,
+                    variableWidth: true,
+                    arrows: true,
+                }
+            }
+        ]
     });
 
     $('.creviews__slider').slick({
-        slidesToShow: 1,
+
         slidesToScroll: 1,
         infinite: true,
         autoplay: true,
         autoplaySpeed: 5000,
         arrows: false,
         dots: false,
-        centerMode: true,
-        centerPadding: '10px',
+
+        responsive: [
+            {
+                breakpoint: 1099,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '10px',
+                }
+            },
+            {
+                breakpoint: 9999,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '200px',
+                }
+            }
+        ]
     });
 
     var slider = $('.creviews__slider');
@@ -212,8 +251,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Добавляем обработчик события afterChange для выделения активного слайда
-    
-    
+
+
 });
 
 // Функция для создания HTML-разметки для одного слайда с датой
